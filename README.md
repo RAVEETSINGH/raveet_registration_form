@@ -36,6 +36,12 @@ To use this form, you can clone the repository and open the `index.html` file in
 Customizing for Your Own Google Sheet
 To link the form to your own Google Sheet:
 
+## Replace the scriptURL in the JavaScript:
+
+In your index.html file, update the scriptURL variable with the new URL from your Google Apps Script:
+ ```const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+
+
 ## Create a Google Sheet.
 
 ## Create a Google Apps Script:
@@ -53,6 +59,7 @@ To link the form to your own Google Sheet:
 Replace 'YOUR_SHEET_ID' with your actual Google Sheet ID.
 Deploy the script as a web app and set it to allow anyone to access it.
 3. Replace the scriptURL in the JavaScript:
+
 
 In the scriptURL variable, replace the URL with your own Google Apps Script URL.
 ```bash
