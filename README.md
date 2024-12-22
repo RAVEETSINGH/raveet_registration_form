@@ -30,6 +30,12 @@ This is a simple **Registration Form** that collects user details such as Full N
   - Password visibility toggle functionality
 - **Google Apps Script**: Used to handle form submissions and send the data to a Google Sheet.
 
+  ## Live Demo
+
+You can try out the live demo of the registration form below:
+
+[**Live Demo Link**](https://your-demo-link.com)
+
 ## Installation
 
 To use this form, you can clone the repository and open the `index.html` file in your browser:
