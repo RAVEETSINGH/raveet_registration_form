@@ -34,7 +34,7 @@ This is a simple **Registration Form** that collects user details such as Full N
 
 You can try out the live demo of the registration form below:
 
-[**Live Demo Link**](https://your-demo-link.com)
+[**Live Demo Link**]([https://your-demo-link.com](https://raveetsingh.github.io/raveet_registration_form/))
 
 ## Installation
 
