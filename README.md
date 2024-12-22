@@ -42,13 +42,14 @@ To link the form to your own Google Sheet:
 
 1. Go to Google Apps Script and create a new project.
 2. Use the following code in your script editor:
-function doPost(e) {
-  var ss = SpreadsheetApp.openById('YOUR_SHEET_ID');
-  var sheet = ss.getSheets()[0];
-  var data = JSON.parse(e.postData.contents);
-  sheet.appendRow([data.fullName, data.username, data.email, data.phone, data.password, data.confirmPassword, data.gender]);
-  return ContentService.createTextOutput("Success");
-}
+ ```javascript
+   function doPost(e) {
+     var ss = SpreadsheetApp.openById('YOUR_SHEET_ID');
+     var sheet = ss.getSheets()[0];
+     var data = JSON.parse(e.postData.contents);
+     sheet.appendRow([data.fullName, data.username, data.email, data.phone, data.password, data.confirmPassword, data.gender]);
+     return ContentService.createTextOutput("Success");
+   }
 Replace 'YOUR_SHEET_ID' with your actual Google Sheet ID.
 Deploy the script as a web app and set it to allow anyone to access it.
 3. Replace the scriptURL in the JavaScript:
