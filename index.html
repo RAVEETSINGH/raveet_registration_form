@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Registration Form</div>
+        <form name="submit-to-google-sheet" id="registrationForm">
+
+            <!----------------- USER DETAILS -------------------->
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Full Name</span>
+                    <input type="text" name="Full Name" placeholder="Enter Your Name" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Username</span>
+                    <input type="text" name="Username" placeholder="Enter Your Username" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">E-mail</span>
+                    <input type="email" name="E-mail" placeholder="Enter Your E-mail" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Phone Number</span>
+                    <input type="number" name="Phone Number" placeholder="Enter Your Number" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" id="password" name="Password" placeholder="Enter Your Password" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Confirm Password</span>
+                    <input type="password" id="confirmPassword" name="Confirm Password" placeholder="Confirm Your Password" required>
+                </div>
+            </div>
+
+            <!------------------GENDER----------------->
+            <div class="gender-details">
+                <span class="gender-title">Gender</span>
+                <div class="types">
+                    <label for="male">
+                        <input type="radio" id="male" name="Gender" value="Male" required> Male
+                    </label>
+                    <label for="female">
+                        <input type="radio" id="female" name="Gender" value="Female" required> Female
+                    </label>
+                    <label for="other">
+                        <input type="radio" id="other" name="Gender" value="Other" required> Prefer not to say
+                    </label>
+                </div>
+            </div>
+
+            <!------------- SUBMIT BUTTON ------------------>
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+        <p id="msg" style="color: green; text-align: center; margin-top: 10px;"></p>
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzVMSX7u30RBe_8Gng7gr4ZFoEz3_UlJ6KjZCdbSyF3oLhU_-0xj_puSYuO7YXWqc-q/exec';
+        const form = document.getElementById('registrationForm');
+        const msg = document.getElementById("msg");
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = "Message sent successfully";
+                    setTimeout(() => { msg.innerHTML = ""; }, 5000);
+                    form.reset();
+                })
+                .catch(error => {
+                    msg.innerHTML = "Error! Message not sent.";
+                    console.error('Error!', error.message);
+                });
+        });
+    </script>
+</body>
+
+</html>
